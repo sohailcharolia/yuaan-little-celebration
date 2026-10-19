@@ -1,0 +1,3 @@
+import { getStore } from '@netlify/blobs';
+import { verify, json } from './_auth.mjs';
+export default async (req)=>{if(req.method!=='GET')return json({error:'Method not allowed'},405);if(!verify(req))return json({error:'Please sign in to view guest responses.'},401);try{const store=getStore('yuaan-rsvps');const guests=[];for await(const item of store.list()){const value=await store.get(item.key,{type:'json'});if(value)guests.push(value)}guests.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));return json({guests})}catch{return json({error:'Could not load guest responses.'},500)}};
