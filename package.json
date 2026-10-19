@@ -1,0 +1,8 @@
+{
+  "name": "yuaan-little-celebration",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Responsive RSVP invitation website for Yuaan Ali's second birthday.",
+  "dependencies": { "@netlify/blobs": "^8.2.0" }
+}
